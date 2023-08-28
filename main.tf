@@ -57,7 +57,6 @@ resource "aws_db_instance" "arroyo_rds_mssql" {
   allocated_storage    = 20
   storage_type        = "gp2"
   engine              = "sqlserver-ex"
-  engine_version      = "15.00.4043.16.v1"
   instance_class      = "db.t2.micro"
   db_name             = "arroyodb"
   username            = "admin"
