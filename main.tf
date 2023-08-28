@@ -4,6 +4,17 @@ provider "aws" {
   region     = var.region
 }
 
+resource "aws_vpc" "arroyo_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "arroyo_subnet" {
+  vpc_id                  = aws_vpc.arroyo_vpc.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "us-west-2a"
+  map_public_ip_on_launch = true
+}
+
 resource "aws_ecs_cluster" "my_cluster_arroyo" {
   name = "my_cluster_arroyo"
 }
@@ -18,7 +29,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   execution_role_arn = aws_iam_role.ecs_execution_role_arroyo.arn
 
   container_definitions = jsonencode([{
-    name  = "my-container",
+    name  = "arroyo-container",
     image = "nginx:latest",
     portMappings = [{
       containerPort = 80,
@@ -34,11 +45,10 @@ resource "aws_ecs_service" "arroyo_service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    # subnets = ["subnet-abc123", "subnet-def456"]  # Reemplaza con tus subnets
+    subnets = [aws_subnet.arroyo_subnet.id]
     assign_public_ip = true
   }
 }
-
 
 resource "aws_iam_role" "ecs_execution_role_arroyo" {
   name = "ecs-execution-role"
@@ -80,6 +90,10 @@ resource "aws_db_instance" "arroyo_rds_mssql" {
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
   # parameter_group_name = "default.sqlserver-ex-15.00"  
+}
+
+output "ecs_publicip" {
+  value = aws_ecs_service.arroyo_service.network_configuration
 }
 
 output "rds_endpoint" {
