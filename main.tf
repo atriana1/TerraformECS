@@ -15,6 +15,10 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   cpu                      = "256"
   memory                   = "512"
   
+  network_configuration {
+    assign_public_ip = true
+  }
+
   execution_role_arn = aws_iam_role.ecs_execution_role_arroyo.arn
 
   container_definitions = jsonencode([{
