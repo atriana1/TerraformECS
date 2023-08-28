@@ -2,7 +2,7 @@ trigger:
 - main  # Puedes cambiar esto según la rama que desees desencadenar
 
 pool:
-  name: vmTerraform
+  name: Default
   #vmImage: 'ubuntu-latest'
 
 steps:
