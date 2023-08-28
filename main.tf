@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_ecs_cluster" "my_cluster_arroyo" {
-  name = "my-ecs-cluster"
+  name = "my_cluster_arroyo"
 }
 
 resource "aws_ecs_task_definition" "my_task_definition" {
@@ -14,10 +14,6 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "256"
   memory                   = "512"
-  
-  network_configuration {
-    assign_public_ip = true
-  }
 
   execution_role_arn = aws_iam_role.ecs_execution_role_arroyo.arn
 
@@ -30,6 +26,19 @@ resource "aws_ecs_task_definition" "my_task_definition" {
     }],
   }])
 }
+
+resource "aws_ecs_service" "arroyo_service" {
+  name            = "arroyo_service"
+  cluster         = aws_ecs_cluster.my_cluster_arroyo.id
+  task_definition = aws_ecs_task_definition.my_task_definition.arn
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    # subnets = ["subnet-abc123", "subnet-def456"]  # Reemplaza con tus subnets
+    assign_public_ip = true
+  }
+}
+
 
 resource "aws_iam_role" "ecs_execution_role_arroyo" {
   name = "ecs-execution-role"
