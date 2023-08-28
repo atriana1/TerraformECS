@@ -56,7 +56,7 @@ resource "aws_security_group" "rds_sg" {
 resource "aws_db_instance" "arroyo_rds_mssql" {
   allocated_storage    = 20
   storage_type        = "gp2"
-  engine              = "sqlserver-ex"
+  engine              = "sqlserver-se"
   instance_class      = "db.t2.micro"
   db_name             = "arroyodb"
   username            = "admin"
