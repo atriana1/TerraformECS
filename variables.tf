@@ -1,6 +1,6 @@
 variable "region" {
   description = "Region to deploy all resources"
-  default     = "us-east-1"
+  default     = "us-west-2"
 }
 
 variable "aws_access_key" {
