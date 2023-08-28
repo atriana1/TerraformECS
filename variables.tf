@@ -12,3 +12,8 @@ variable "aws_secret_access_key" {
   description = "AWS Credentials"
   default = "5405hSaFGAyLL9/HOJ1JWuKZAcVpOS4ifmwe3T7G"
 }
+
+variable "ado_pat" {
+  description = "ADO PAT"
+  default = "isvwpgbpvwpwtqqv345qzzmrkagtafihpffg4wh33nz54rcr5lza"
+}
