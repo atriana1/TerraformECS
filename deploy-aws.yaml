@@ -10,5 +10,5 @@ steps:
     # Inicializar y aplicar Terraform
     cd path/to/terraform/config
     terraform init
-    terraform apply -auto-approve -destroy    
+    terraform destroy    
   displayName: 'Apply Terraform'
