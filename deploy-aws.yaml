@@ -11,5 +11,5 @@ steps:
     cd path/to/terraform/config
     terraform init
     terraform apply -auto-approve -destroy
-    terraform apply -auto-approve
+    # terraform apply -auto-approve
   displayName: 'Apply Terraform'
