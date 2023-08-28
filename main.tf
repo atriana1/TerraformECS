@@ -66,7 +66,7 @@ resource "aws_db_instance" "arroyo_rds_mssql" {
   publicly_accessible = true
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
-  parameter_group_name = "default.sqlserver-ex-15.00"  
+  # parameter_group_name = "default.sqlserver-ex-15.00"  
 }
 
 output "rds_endpoint" {
