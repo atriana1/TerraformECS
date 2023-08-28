@@ -59,7 +59,7 @@ resource "aws_db_instance" "arroyo_rds_mssql" {
   engine              = "sqlserver-ex"
   instance_class      = "db.t3.small"
   skip_final_snapshot = true
-  db_name             = "arroyodb"
+  # db_name             = "arroyodb"
   username            = "admin"
   password            = "Colombia2023."
   
