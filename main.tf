@@ -59,7 +59,7 @@ resource "aws_db_instance" "arroyo_rds_mssql" {
   engine              = "sqlserver-ex"
   engine_version      = "15.00.4043.16.v1"
   instance_class      = "db.t2.micro"
-  name                = "arroyodb"
+  db_name             = "arroyodb"
   username            = "admin"
   password            = "Colombia2023."
   
