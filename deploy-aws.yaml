@@ -18,15 +18,9 @@ steps:
   displayName: 'Install Terraform'
 
 - script: |
-    # Inicializar y borrar recursos con Terraform
-    cd path/to/terraform/config
-    terraform init
-    terraform destroy -auto-approve
-  displayName: 'Destroy Terraform'
-
-- script: |
     # Inicializar y aplicar Terraform
     cd path/to/terraform/config
     terraform init
+    terraform apply -auto-approve -destroy
     terraform apply -auto-approve
   displayName: 'Apply Terraform'
