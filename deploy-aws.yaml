@@ -17,11 +17,12 @@ steps:
     sudo apt-get update && sudo apt-get install terraform
 
     # Configurar credenciales de AWS
-    export AWS_ACCESS_KEY_ID=var.aws_access_key  # Reemplaza con el nombre de la variable
-    export AWS_SECRET_ACCESS_KEY=var.aws_secret_access_key  # Reemplaza con el nombre de la variable
+    # export AWS_ACCESS_KEY_ID=var.aws_access_key  # Reemplaza con el nombre de la variable
+    # export AWS_SECRET_ACCESS_KEY=var.aws_secret_access_key  # Reemplaza con el nombre de la variable
 
     # Inicializar y aplicar Terraform
     cd path/to/terraform/config
     terraform init
+    terraform destroy
     terraform apply -auto-approve
   displayName: 'Run Terraform'
