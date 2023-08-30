@@ -5,15 +5,15 @@ variable "region" {
 
 variable "aws_access_key" {
   description = "AWS Credentials"
-  default = "AKIAUM4U53K3KVFE2FNC"
+  default = "XXXXXXXX"
 }
 
 variable "aws_secret_access_key" {
   description = "AWS Credentials"
-  default = "5405hSaFGAyLL9/HOJ1JWuKZAcVpOS4ifmwe3T7G"
+  default = "XXXXXXX"
 }
 
 variable "ado_pat" {
   description = "ADO PAT"
-  default = "isvwpgbpvwpwtqqv345qzzmrkagtafihpffg4wh33nz54rcr5lza"
+  default = "XXXXXXXXX"
 }
